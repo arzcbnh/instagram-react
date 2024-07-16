@@ -1,20 +1,15 @@
+import User from "./User.js";
+
 export default function SideBar() {
     return (
-        <div className="sidebar"></div>
-    )
+        <div className="sidebar">
+            <User />
+        </div>
+    );
 }
 
 /*
     <div class="sidebar">
-        <div class="usuario">
-            <img src="assets/img/catanacomics.svg" alt="imagem de perfil" />
-            <div class="texto">
-                <span>
-                    <strong>catanacomics</strong>
-                    <ion-icon name="pencil"></ion-icon>
-                </span>
-            </div>
-        </div>
 
         <div class="sugestoes">
             <div class="titulo">
