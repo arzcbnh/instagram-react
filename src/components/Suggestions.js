@@ -5,7 +5,7 @@ export default function Suggestions() {
         { name: "razoesparaacreditar", reason: "Novo no Instagram" },
         { name: "adorable_animals", reason: "Segue você" },
         { name: "smallcutecats", reason: "Segue você" }
-    ]
+    ];
 
     return (
         <div className="sugestoes">
