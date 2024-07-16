@@ -8,8 +8,8 @@ export default function Body() {
             <div className="esquerda">
                 <Stories />
                 <Posts />
-                <SideBar />
             </div>
+            <SideBar />
         </div>
     );
 }
