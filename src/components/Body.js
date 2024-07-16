@@ -1,5 +1,6 @@
 import Stories from "./Stories.js";
 import Posts from "./Posts.js";
+import SideBar from "./SideBar.js";
 
 export default function Body() {
     return (
@@ -7,6 +8,7 @@ export default function Body() {
             <div className="esquerda">
                 <Stories />
                 <Posts />
+                <SideBar />
             </div>
         </div>
     );
