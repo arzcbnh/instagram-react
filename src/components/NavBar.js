@@ -31,7 +31,7 @@ function Search() {
 
 function Icons() {
     return (
-        <div class="icones">
+        <div className="icones">
             <ion-icon name="paper-plane-outline"></ion-icon>
             <ion-icon name="compass-outline"></ion-icon>
             <ion-icon name="heart-outline"></ion-icon>
@@ -42,7 +42,7 @@ function Icons() {
 
 function IconsMobile() {
     return (
-        <div class="icones-mobile">
+        <div className="icones-mobile">
             <ion-icon name="paper-plane-outline"></ion-icon>
         </div>
     );
