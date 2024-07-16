@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function Posts() {
     const posts = [
         { user: "meowed", content: "gato-telefone", likes: { actor: "respondeai", amount: 101523 } },
@@ -13,11 +15,33 @@ export default function Posts() {
 }
 
 function Post({ user, content, likes }) {
+    const [likeAmount, setLikeAmount] = React.useState(likes.amount);
+    const [heart, setHeart] = React.useState("heart-outline");
+
+    function like() {
+        if (heart.match(/outline/))
+            setLikeAmount(likeAmount + 1);
+
+        setHeart("heart");
+    }
+
+    function dislike() {
+        setLikeAmount(likeAmount - 1);
+        setHeart("heart-outline");
+    }
+
+    function toggleLike() {
+        if (heart.match(/outline/))
+            like();
+        else
+            dislike();
+    }
+
     return (
         <div className="post">
             <Top user={user} />
-            <Content content={content} />
-            <Bottom actor={likes.actor} amount={likes.amount} />
+            <Content content={content} like={like} />
+            <Bottom actor={likes.actor} likeAmount={likeAmount} heart={heart} toggleLike={toggleLike} />
         </div>
     );
 }
@@ -36,38 +60,48 @@ function Top({ user }) {
     );
 }
 
-function Content({ content }) {
+function Content({ content, like }) {
     return (
         <div className="conteudo">
-            <img src={`assets/img/${content}.svg`} alt={content} />
+            <img src={`assets/img/${content}.svg`} alt={content} onClick={like} />
         </div>
     );
 }
 
-function Bottom({ actor, amount }) {
+function Bottom({ actor, likeAmount, heart, toggleLike }) {
     return (
         <div className="fundo">
-            <Actions />
+            <Actions heart={heart} toggleLike={toggleLike} />
             <div className="curtidas">
                 <img src={`assets/img/${actor}.svg`} alt={actor} />
                 <div className="texto">
-                    Curtido por <strong>{actor}</strong> e <strong>outras {amount} pessoas</strong>
+                    Curtido por <strong>{actor}</strong> e <strong>outras {likeAmount} pessoas</strong>
                 </div>
             </div>
         </div>
     );
 }
 
-function Actions() {
+function Actions({ heart, toggleLike }) {
+    const [bookmark, setBookmark] = React.useState("bookmark-outline");
+
+    function toggleBookmark() {
+        if (bookmark.match(/outline/)) {
+            setBookmark("bookmark");
+        } else {
+            setBookmark("bookmark-outline");
+        }
+    }
+
     return (
         <div className="acoes">
             <div>
-                <ion-icon name="heart-outline"></ion-icon>
+                <ion-icon name={heart} onClick={toggleLike}></ion-icon>
                 <ion-icon name="chatbubble-outline"></ion-icon>
                 <ion-icon name="paper-plane-outline"></ion-icon>
             </div>
             <div>
-                <ion-icon name="bookmark-outline"></ion-icon>
+                <ion-icon name={bookmark} onClick={toggleBookmark}></ion-icon>
             </div>
         </div>
     );
