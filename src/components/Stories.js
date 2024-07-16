@@ -12,7 +12,7 @@ export default function Stories() {
 
     return (
         <div className="stories">
-            {users.map(u => <Story name={u} />)};
+            {users.map((user, index) => <Story name={user} key={index} />)};
             <div className="setinha">
                 <ion-icon name="chevron-forward-circle"></ion-icon>
             </div>
@@ -20,7 +20,7 @@ export default function Stories() {
     );
 }
 
-function Story({name}) {
+function Story({ name }) {
     return (
         <div className="story">
             <div className="imagem">

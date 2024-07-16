@@ -14,7 +14,7 @@ export default function Suggestions() {
                 <div>Ver tudo</div>
             </div>
 
-            {users.map(u => Suggestion(u))}
+            {users.map((u, index) => <Suggestion name={u.name} reason={u.reason} key={index} />)}
         </div>
     );
 }

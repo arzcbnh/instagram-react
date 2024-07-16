@@ -9,7 +9,7 @@ export default function Posts() {
 
     return (
         <div className="posts">
-            {posts.map(p => Post(p))}
+            {posts.map((p, index) => <Post user={p.user} content={p.content} likes={p.likes} key={index} />)}
         </div>
     );
 }
